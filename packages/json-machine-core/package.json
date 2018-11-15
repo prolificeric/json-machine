@@ -2,9 +2,9 @@
   "name": "json-machine-core",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {},
-  "author": "",
+  "author": "Eric Weber <eric@prolificinteractive.com>",
   "license": "ISC",
   "dependencies": {
     "lodash": "^4.17.11",
