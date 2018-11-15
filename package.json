@@ -1,0 +1,30 @@
+{
+  "name": "json-machine",
+  "version": "1.0.0",
+  "description": "Functional JSON",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest packages/*/src/lib",
+    "test:watch": "jest packages/*/src/lib --watch",
+    "prepublish": "node script/prepublish.js"
+  },
+  "author": "Eric Weber <eric@prolificinteractive.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/register": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "husky": "^1.1.2",
+    "jest": "^23.6.0",
+    "lerna": "^3.4.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test"
+    }
+  }
+}
