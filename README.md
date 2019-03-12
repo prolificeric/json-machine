@@ -226,7 +226,7 @@ In order to make that work, there needs to be a special parser that can handle t
 
 ## Caveats
 
-It's ugly, has no test coverage, and hasn't been battle tested. Error messages aren't meaninful, either.
+It's ugly, has no test coverage, and hasn't been battle tested. Error messages aren't meaningful, either.
 
 I didn't put a ton of thought into the core functions. I did slap `lodash/fp` onto the core which I assumed would provide a lot of essentials and utilities.
 
