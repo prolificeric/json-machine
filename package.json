@@ -1,0 +1,28 @@
+{
+  "name": "json-machine",
+  "version": "1.0.0",
+  "description": "An experiment to add a functional layer to JSON.",
+  "main": "index.js",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "lodash": "^4.17.11",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prolificeric/json-machine.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prolificeric/json-machine/issues"
+  },
+  "homepage": "https://github.com/prolificeric/json-machine#readme"
+}
