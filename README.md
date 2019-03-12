@@ -203,7 +203,7 @@ The thought here is, if there were a way to represent functions and variables in
 ```javascript
 ["lambda", ["."
   ["@", "constants", {
-    "colors: {
+    "colors": {
       "primaryDark": "#111111",
       "secondaryDark": "#6666ff"
     },
