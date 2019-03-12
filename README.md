@@ -4,7 +4,7 @@ An experiment to add a functional layer to JSON.
 
 ## Example
 
-```json
+```javascript
 ["_.map", ["*", 2], [".", 1, 2, 3, 4]]
 // -> [2, 4, 6, 8]
 ```
@@ -13,13 +13,13 @@ An experiment to add a functional layer to JSON.
 
 When the JSON is computed, it treats all values __except arrays__ the same as it normally would. Arrays are the way we represent function calls.
 
-```json
+```javascript
 ["+", 1, 1] // -> 2
 ```
 
 In order to declare an array value, there are two functions you can use: `.` and `:`.
 
-```json
+```javascript
 // Strict literal
 [".", ["+", 1, 2], 3, 4, 5] // -> [["+", 1, 2], 3, 4, 5]
 
@@ -31,7 +31,7 @@ In order to declare an array value, there are two functions you can use: `.` and
 
 ### Syntax
 
-```json
+```javascript
 ["lambda",
   [".", "x", "y"], // Arguments
   [".",            // Statements
@@ -48,7 +48,7 @@ In order to declare an array value, there are two functions you can use: `.` and
 
 If you're going to write more than one line of code, you'll need to wrap it in a lambda. This acts as a sort of "main" function.
 
-```json
+```javascript
 ["lambda", [".",
   ["=", "x", 10],
   ["^", 2, ["@", "x"]]
@@ -70,7 +70,7 @@ assert(await getResult(), 100); // -> true
 
 You can also define lambdas within programs. One way is by currying:
 
-```json
+```javascript
 ["lambda", [".",
   ["=", "x", 10],
   ["@", "square", ["^", 2]], // ^ function partially applied
@@ -80,7 +80,7 @@ You can also define lambdas within programs. One way is by currying:
 
 Another is by defining and assigning a lambda:
 
-```json
+```javascript
 ["lambda", [".",
   ["@", "sayHello", ["lambda",
     [".", "name"],
@@ -98,19 +98,19 @@ Another is by defining and assigning a lambda:
 
 You set variables using the `=` function:
 
-```json
+```javascript
 ["=", "x", 100]
 ```
 
 You access variables using the `@` function:
 
-```json
+```javascript
 ["@", "x"] // -> 100
 ```
 
 You access object properties using the `_.get` function (Lodash):
 
-```json
+```javascript
 ["lambda", [".",
   ["=", "obj", {
     "foo": {
@@ -133,9 +133,13 @@ Runs a JSON value against context, applying the special syntax for functions and
 
 Generates an object that represents the state at a given area of a program. Any function or variable is stored in the context. When you run a line of code, a new context is returned that contains the return value as well as any new variables (including functions) that were declared. They are meant to be immutable, and so methods return new `Context` objects.
 
+### `IContext` interface
+
+#### `context.returnValue: any`
+
 #### `context.compute(program: any): Promise<Context>`
 
-Runs program against this context.
+Runs program against this context and returns a promise resolving to a new context.
 
 #### `context.set(path: string, value: any): Context`
 
@@ -196,7 +200,7 @@ I started tinkering with this after discussing ways to store the values for desi
 
 The thought here is, if there were a way to represent functions and variables in JSON, we could easily serialize and store a graph of functional values. From there, we can put a graphical interface on top that would manipulate that graph. The program would look something like this:
 
-```json
+```javascript
 ["lambda", ["."
   ["@", "constants", {
     "colors: {
