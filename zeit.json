@@ -1,0 +1,10 @@
+{
+  "name": "json-machine",
+  "version": 2,
+  "builds": [
+    { "src": "api.js", "use": "@now/node" }
+  ],
+  "routes": [
+    { "src": "/compute", "methods": ["POST"], "dest": "api.js" }
+  ]
+}
