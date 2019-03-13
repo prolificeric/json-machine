@@ -169,6 +169,7 @@ const core = exports.core = Context({
     };
 
     return Object.assign(lambda, {
+      __isLambda: true,
       argKeys,
       statements
     });
@@ -189,22 +190,22 @@ const core = exports.core = Context({
 
   '*': Curry2((a, b) => a * b),
 
-  '/': Curry2((a, b) => a / b),
+  '/': Curry2((a, b) => b / a),
 
-  '^': Curry2((a, b) => a ** b),
+  '^': Curry2((a, b) => b ** a),
 
   // Equality
   '==': Curry2((a, b) => a === b),
 
   '!=': Curry2((a, b) => a !== b),
 
-  '>': Curry2((a, b) => a > b),
+  '>': Curry2((a, b) => b > a),
 
-  '>=': Curry2((a, b) => a >= b),
+  '>=': Curry2((a, b) => b >= a),
 
-  '<': Curry2((a, b) => a < b),
+  '<': Curry2((a, b) => b < a),
 
-  '<=': Curry2((a, b) => a <= b),
+  '<=': Curry2((a, b) => b <= a),
 
   // Logic
   '?': (test, ifTrue, ifFalse) => test ? ifTrue() : ifFalse(),

@@ -7,7 +7,7 @@ module.exports = context => context.extend({
   request,
 
   'load': async function (uri) {
-    const program = await request({ uri });
+    const program = await request({ uri, json: true });
     return this.compute(program);
   },
 
