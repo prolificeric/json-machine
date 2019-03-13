@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const { core } = require('./index.js');
 const withRemote = require('./remote');
 const app = express();
+
+// Adds remote computing capabilities
 const remoteContext = withRemote(core);
 
 const handler = context => async (req, resp, next) => {
@@ -26,15 +28,6 @@ const handler = context => async (req, resp, next) => {
   }
 };
 
-const coreHandler = handler(core);
-const remoteHandler = handler(remoteContext);
-
-app.get('/square.json', (req, resp) => {
-  resp.json(["lambda", [".", "x"], [".",
-    ["^", 2, ["@", "x"]]
-  ]]);
-});
-
 app.use('/compute', [
   bodyParser.json(),
   (req, resp, next) => {
@@ -49,8 +42,6 @@ app.use('/compute', [
   }
 ]);
 
-app.all('/compute', coreHandler);
-
-app.all('/compute/remote', remoteHandler);
+app.all('/compute', handler(remoteContext));
 
 module.exports = app;
