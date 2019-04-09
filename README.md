@@ -73,7 +73,7 @@ You can also define lambdas within programs. One way is by currying:
 ```javascript
 ["lambda", [".",
   ["=", "x", 10],
-  ["@", "square", ["^", 2]], // ^ function partially applied
+  ["=", "square", ["^", 2]], // ^ function partially applied
   ["square", ["@", "x"]]
 ]];
 ```
